@@ -20,5 +20,14 @@ final class DependencyManager {
         container.register(DownloadManager.self) { resolver in
             return DownloadManager()
         }
+        
+        container.register(DiskStatus.self) { resolver in
+            return DiskStatus()
+        }
     }
+    
+    public static func resolve<Service>(_ serviceType: Service.Type) -> Service {
+        return DependencyManager.container.resolve(serviceType, name: nil)!
+    }
+
 }

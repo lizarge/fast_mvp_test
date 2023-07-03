@@ -17,6 +17,10 @@
 		D95A22862A52D0B20006D848 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A22852A52D0B20006D848 /* DownloadManager.swift */; };
 		D95A22882A52D0D20006D848 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A22872A52D0D20006D848 /* DependencyManager.swift */; };
 		D95A228B2A52D15C0006D848 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = D95A228A2A52D15C0006D848 /* Swinject */; };
+		D95A228D2A52D5290006D848 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A228C2A52D5290006D848 /* NavigationController.swift */; };
+		D95A22902A52D89E0006D848 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A228F2A52D89E0006D848 /* Others.swift */; };
+		D95A22932A52DBE80006D848 /* DiskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A22922A52DBE80006D848 /* DiskStatus.swift */; };
+		D95A22952A52DC680006D848 /* FreeSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A22942A52DC680006D848 /* FreeSpaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		D95A227B2A52CF9C0006D848 /* DetailRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRegionViewController.swift; sourceTree = "<group>"; };
 		D95A22852A52D0B20006D848 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		D95A22872A52D0D20006D848 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		D95A228C2A52D5290006D848 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		D95A228F2A52D89E0006D848 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
+		D95A22922A52DBE80006D848 /* DiskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStatus.swift; sourceTree = "<group>"; };
+		D95A22942A52DC680006D848 /* FreeSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeSpaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 		D95A225B2A52CB540006D848 /* mapdownloader */ = {
 			isa = PBXGroup;
 			children = (
+				D95A228E2A52D8900006D848 /* Extension */,
 				D95A22742A52CBFF0006D848 /* ViewControllers */,
 				D95A22712A52CBA10006D848 /* Resources */,
 				D95A22752A52CC150006D848 /* Data */,
@@ -94,8 +103,10 @@
 		D95A22742A52CBFF0006D848 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D95A22912A52DB440006D848 /* Views */,
 				D95A22792A52CF0E0006D848 /* RegionViewController.swift */,
 				D95A227B2A52CF9C0006D848 /* DetailRegionViewController.swift */,
+				D95A228C2A52D5290006D848 /* NavigationController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -106,6 +117,7 @@
 				D95A22782A52CC6C0006D848 /* Model */,
 				D95A22852A52D0B20006D848 /* DownloadManager.swift */,
 				D95A22872A52D0D20006D848 /* DependencyManager.swift */,
+				D95A22922A52DBE80006D848 /* DiskStatus.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -115,6 +127,22 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D95A228E2A52D8900006D848 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D95A228F2A52D89E0006D848 /* Others.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D95A22912A52DB440006D848 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D95A22942A52DC680006D848 /* FreeSpaceView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,10 +225,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D95A225D2A52CB540006D848 /* AppDelegate.swift in Sources */,
+				D95A22932A52DBE80006D848 /* DiskStatus.swift in Sources */,
+				D95A228D2A52D5290006D848 /* NavigationController.swift in Sources */,
 				D95A227A2A52CF0E0006D848 /* RegionViewController.swift in Sources */,
+				D95A22902A52D89E0006D848 /* Others.swift in Sources */,
 				D95A22882A52D0D20006D848 /* DependencyManager.swift in Sources */,
 				D95A227C2A52CF9C0006D848 /* DetailRegionViewController.swift in Sources */,
 				D95A22862A52D0B20006D848 /* DownloadManager.swift in Sources */,
+				D95A22952A52DC680006D848 /* FreeSpaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,8 +386,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,8 +415,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

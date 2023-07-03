@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import Swinject
 
 class RegionViewController: UITableViewController {
 
+    let discStatus = DependencyManager.resolve(DiskStatus.self)
+    
+    @IBOutlet weak var deviceMemoryView: FreeSpaceView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.deviceMemoryView.updateWith(discStatus: discStatus)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -3,11 +3,12 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Download Maps-->
         <scene sceneID="Ijj-vP-jFs">
             <objects>
                 <tableViewController id="rfH-2f-AAi" customClass="RegionViewController" customModule="mapdownloader" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,14 +16,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="fKd-lC-MsE">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="fKd-lC-MsE" customClass="FreeSpaceView" customModule="mapdownloader" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device memory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekl-dE-oyB">
+                                    <rect key="frame" x="15" y="11" width="150" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="8Gf-K5-mcV"/>
+                                        <constraint firstAttribute="height" constant="21" id="T8X-5W-iVX"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXQ-lz-AFs">
+                                    <rect key="frame" x="178" y="11" width="200" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="rQ1-7U-SMa"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="hoM-yN-dUe">
+                                    <rect key="frame" x="16" y="41" width="361" height="10"/>
+                                    <color key="tintColor" name="navbar"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="eu8-7Z-leY"/>
+                                        <constraint firstAttribute="height" constant="10" id="lAK-vg-rWb"/>
+                                    </constraints>
+                                </progressView>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="hoM-yN-dUe" secondAttribute="trailing" constant="16" id="Abr-DM-AoU"/>
+                                <constraint firstItem="Ekl-dE-oyB" firstAttribute="top" secondItem="fKd-lC-MsE" secondAttribute="top" constant="11" id="Xph-3W-EmK"/>
+                                <constraint firstItem="jXQ-lz-AFs" firstAttribute="top" secondItem="fKd-lC-MsE" secondAttribute="top" constant="11" id="aMh-8K-bJX"/>
+                                <constraint firstItem="Ekl-dE-oyB" firstAttribute="leading" secondItem="fKd-lC-MsE" secondAttribute="leading" constant="15" id="anz-Ew-GZO"/>
+                                <constraint firstItem="hoM-yN-dUe" firstAttribute="leading" secondItem="fKd-lC-MsE" secondAttribute="leading" constant="16" id="gjY-Qb-ddp"/>
+                                <constraint firstItem="hoM-yN-dUe" firstAttribute="top" secondItem="Ekl-dE-oyB" secondAttribute="bottom" constant="9" id="i9S-N8-Ltl"/>
+                                <constraint firstItem="jXQ-lz-AFs" firstAttribute="leading" secondItem="Ekl-dE-oyB" secondAttribute="trailing" constant="13" id="jt5-n9-n5V"/>
+                                <constraint firstAttribute="trailing" secondItem="jXQ-lz-AFs" secondAttribute="trailing" constant="15" id="pxc-if-RNi"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="freeSpaceLabel" destination="jXQ-lz-AFs" id="WcU-it-8TG"/>
+                                <outlet property="freeSpaceProgress" destination="hoM-yN-dUe" id="Qng-Yr-3MC"/>
+                            </connections>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="z78-P8-09O">
-                                <rect key="frame" x="0.0" y="99.333332061767578" width="393" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="119.33333206176758" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z78-P8-09O" id="mLL-3Q-zhl">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
@@ -35,14 +79,15 @@
                             <outlet property="delegate" destination="rfH-2f-AAi" id="voy-TP-OGl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="7W9-Rv-2na"/>
+                    <navigationItem key="navigationItem" title="Download Maps" id="7W9-Rv-2na"/>
                     <connections>
+                        <outlet property="deviceMemoryView" destination="fKd-lC-MsE" id="TTV-BD-W2c"/>
                         <segue destination="V1f-ui-iH3" kind="show" id="39D-PX-jOH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zj-Dv-I1t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="-250"/>
+            <point key="canvasLocation" x="701.52671755725191" y="-250"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="HqI-5d-7ve">
@@ -76,7 +121,8 @@
         <!--Navigation Controller-->
         <scene sceneID="0fO-Ch-mbo">
             <objects>
-                <navigationController id="9p3-El-kJb" sceneMemberID="viewController">
+                <navigationController id="9p3-El-kJb" customClass="NavigationController" customModule="mapdownloader" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WKa-ql-u6K">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -91,6 +137,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="navbar">
+            <color red="0.93725490570000003" green="0.55686277149999996" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
