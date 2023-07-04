@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <regions_list>
-		
+		<!-- boundary:
+		1. boundary="no" - no boundary for this region
+		2. boundary omit - boundary will be looked up by name
+		3. boundary="$FILENAME" boundary will be looked up by $FILENAME
+			in case FILENAME duplicates i.e. 'georgia', it will be accessible in 2 ways
+			$PARENT_FOLDER/$FILENAME - 'us/georgia' and 'asia/georgia'
+		-->
+		<!-- type, map, wiki, roads, srtm, hillshade
+			1. by default map=yes, srtm=yes, hillshade=yes (in case 'type' not specified)
+			2. in case wiki/roads not specified, wiki/roads same as maps
+			3. if map, wiki, roads, srtm, hillshade specified, it sets to value specified
+			4. in case type specified it takes precedence and sets all flags = no
+				Examples
+				type=srtm: map=no, srtm=yes, hillshade=no
+				type=hillshade: map=no, srtm=no, hillshade=yes
+				type=continent: map=no, srtm=no, hillshade=no
+		-->
+		<!--
+			download_suffix, inner_download_suffix, download_prefix, inner_download_prefix
+			1. In case download_suffix, download_prefix specified, then
+				download_name = download_prefix + "_" + name + "_" + download_suffix
+			   In case only download_suffix speicfied
+			   	download_name =  name + "_" + download_suffix
+			   	In case only download_prefix speicfied
+			   	download_name =  download_prefix + "_" + name
+			2. If download_suffix is not specified it is taken from parent region or from parent parent region ...
+			2.1 If parent region has inner_download_suffix, then download_suffix=inner_download_suffix
+		-->
 		<region type="continent" name="europe"
 			translate="=Europe" inner_download_suffix="europe" boundary="no" poly_extract="europe">
 

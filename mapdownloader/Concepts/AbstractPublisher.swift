@@ -28,7 +28,7 @@ class AbstractPublisher {
         subscribers.removeAll(where: { $0.value === subscriber })
     }
     
-    func notify(finished:Bool?) {
-        subscribers.forEach { $0.value?.updateDownloadState(subject: self, finished:true ) }
+    func notify(finished:Bool) {
+        subscribers.forEach { $0.value?.updateDownloadState(subject: self, finished:finished ) }
     }
 }

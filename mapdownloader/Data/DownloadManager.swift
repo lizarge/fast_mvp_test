@@ -27,41 +27,71 @@ class DownloadManager: AbstractPublisher {
         return self.fileStates[region.url] ?? .none
     }
     
-    func dowload(region:Region){
+    func dowload(region:Region, downloadPrefix anotherBoringPrefix:String = ""){
         Task {
             let destination: DownloadRequest.Destination = { _, _ in
-                let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 let fileURL = documentsURL.appendingPathComponent( region.url.absoluteString )
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
             
-            if let url = URL(string: Constants.downloadPrefix + region.url.absoluteString) {
+            if let url = URL(string: Constants.downloadPrefix + region.url.absoluteString + anotherBoringPrefix + Constants.fileNamePostfix ) {
+                
+                print(url)
+                
+                self.fileStates[region.url] = .uploading(0)
+                self.notify(finished: true)
+                
                 AF.download(url,to: destination)
                 .downloadProgress { progress in
                     self.fileStates[region.url] = .uploading(progress.fractionCompleted)
                     self.notify(finished: false)
                 }
                 .responseData { response in
-                    self.fileStates[region.url] = .dowloaded
+                    var statusCode = response.response?.statusCode
+                    
+                    if statusCode != 200 {
+                        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                        let fileURL = documentsURL.appendingPathComponent( region.url.absoluteString )
+                        try? FileManager.default.removeItem(at: documentsURL)
+                    }
+                    
+                    self.fileStates[region.url] = statusCode == 200 ? .dowloaded : .none
                     self.refreshStatuses()
                     self.notify(finished: true)
+           
                 }
             }
         }
     }
     
     func refreshStatuses(){
-        let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-
+        
         do {
-            let items = try FileManager.default.contentsOfDirectory(atPath: documentsURL.absoluteString)
+            // Get the document directory url
+            let documentDirectory = try FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
+           
+            let directoryContents = try FileManager.default.contentsOfDirectory(
+                at: documentDirectory,
+                includingPropertiesForKeys: nil
+            )
+        
+            let items = directoryContents.map { $0.lastPathComponent }
+            
             for item in items {
-                if let fileName = item.components(separatedBy: ".").last, let url = URL(string: fileName) {
+                if let url = URL(string: item) {
                     self.fileStates[url] = .dowloaded
                 }
             }
+            
         } catch {
             print(error)
         }
+        
     }
 }

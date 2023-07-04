@@ -13,12 +13,21 @@ struct Region: Codable  {
         case yes
         case no
         
+        init(value:String?){
+            if let value = value, value == "no" {
+                self.init(rawValue: "no")!
+            } else {
+                self.init(rawValue: "yes")!
+            }
+        }
+        
         var bool:Bool {
             return self == .yes
         }
     }
     
     var name: String
+    var downloadPrefix: String?
     var map: YNBool?
     var regions: [Region]?
     var url:URL
@@ -28,7 +37,11 @@ struct Region: Codable  {
         self.map = map
         self.regions = regions
         
-        self.url = URL(string:
-                        "\(self.name.replacingOccurrences(of:" ", with: "_").capitalized)\(Constants.fileNamePostfix)") ?? (NSURL() as URL)
+        let capitalizedName = self.name.lowercased().capitalizedSentence.replacingOccurrences(of:" ", with: "_")
+        
+        self.url = URL(string: "\(capitalizedName)" ) ?? (NSURL() as URL)
     }
 }
+
+//https://download.osmand.net/download?standard=yes&file=Capital_region_denmark_europe_2.obf.zip
+

@@ -15,6 +15,7 @@ class RegionViewController: UITableViewController {
     
     @IBOutlet weak var deviceMemoryView: FreeSpaceView!
     
+    var downloadPrefix = ""
     var isSecondaryController = false 
     var regionList:[Region]? {
         didSet{
@@ -65,10 +66,17 @@ class RegionViewController: UITableViewController {
             if let region = regionList?[indexPath.section].regions?[indexPath.row], let regions = region.regions, regions.count > 0 {
                 regionViewController.isSecondaryController = true
                 regionViewController.regionList = [region]
-                regionViewController.title = regionList?[indexPath.section].regions?[indexPath.row].name
+                regionViewController.title = region.name
+                
+                if let  prefix = region.downloadPrefix {
+                    regionViewController.downloadPrefix = prefix.capitalizedSentence + "_" + self.downloadPrefix
+                } else {
+                    regionViewController.downloadPrefix = self.downloadPrefix
+                }
+                
                 self.navigationController?.pushViewController(regionViewController, animated: true)
             } else if let region = regionList?[indexPath.section].regions?[indexPath.row]{
-                self.downloadManager.dowload(region: region)
+                self.downloadManager.dowload(region: region, downloadPrefix: self.downloadPrefix)
             }
         }
     }
@@ -78,7 +86,10 @@ class RegionViewController: UITableViewController {
 extension RegionViewController:Subscriber {
     func updateDownloadState(subject: AbstractPublisher, finished: Bool) {
         if finished {
-            self.deviceMemoryView?.updateWith(discStatus: memoryStatusView)
+            DispatchQueue.main.async {
+                self.deviceMemoryView?.updateWith(discStatus: self.memoryStatusView)
+                self.tableView.reloadData()
+            }
         }
     }
 }

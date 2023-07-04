@@ -23,7 +23,8 @@ class RegionViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        downloadManager.subscribe(self)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,6 +40,7 @@ class RegionViewCell: UITableViewCell {
         if let region = region {
             updateState(dm: self.downloadManager, region: region)
         }
+        
     }
     
     func updateState(dm:DownloadManager, region:Region){
@@ -69,7 +71,9 @@ class RegionViewCell: UITableViewCell {
 extension RegionViewCell:Subscriber {
     func updateDownloadState(subject: AbstractPublisher, finished: Bool) {
         if let dm = subject as? DownloadManager, let region = self.region {
-            self.updateState(dm: dm, region: region)
+            DispatchQueue.main.async {
+                self.updateState(dm: dm, region: region)
+            }
         }
     }
 }

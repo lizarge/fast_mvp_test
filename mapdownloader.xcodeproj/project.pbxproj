@@ -11,7 +11,6 @@
 		D929B18D2A5454F40055602A /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D929B18C2A5454F40055602A /* ProgressHUD */; };
 		D929B18F2A545CB20055602A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D929B18E2A545CB20055602A /* Assets.xcassets */; };
 		D929B1922A5461FA0055602A /* AbstractPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D929B1912A5461FA0055602A /* AbstractPublisher.swift */; };
-		D929B1952A5496BC0055602A /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = D929B1942A5496BC0055602A /* Resolver */; };
 		D95A225D2A52CB540006D848 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A225C2A52CB540006D848 /* AppDelegate.swift */; };
 		D95A22642A52CB540006D848 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95A22622A52CB540006D848 /* Main.storyboard */; };
 		D95A22692A52CB540006D848 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95A22672A52CB540006D848 /* LaunchScreen.storyboard */; };
@@ -59,7 +58,6 @@
 				D95A227F2A52D0880006D848 /* Alamofire in Frameworks */,
 				D929B18D2A5454F40055602A /* ProgressHUD in Frameworks */,
 				D95A228B2A52D15C0006D848 /* Swinject in Frameworks */,
-				D929B1952A5496BC0055602A /* Resolver in Frameworks */,
 				D96ECFD92A5313F800E65B4F /* SwiftyXMLParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,7 +190,6 @@
 				D95A228A2A52D15C0006D848 /* Swinject */,
 				D96ECFD82A5313F800E65B4F /* SwiftyXMLParser */,
 				D929B18C2A5454F40055602A /* ProgressHUD */,
-				D929B1942A5496BC0055602A /* Resolver */,
 			);
 			productName = mapdownloader;
 			productReference = D95A22592A52CB540006D848 /* mapdownloader.app */;
@@ -227,7 +224,6 @@
 				D95A22892A52D15C0006D848 /* XCRemoteSwiftPackageReference "Swinject" */,
 				D96ECFD72A5313F800E65B4F /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */,
 				D929B18B2A5454F40055602A /* XCRemoteSwiftPackageReference "ProgressHUD" */,
-				D929B1932A5496BC0055602A /* XCRemoteSwiftPackageReference "Resolver" */,
 			);
 			productRefGroup = D95A225A2A52CB540006D848 /* Products */;
 			projectDirPath = "";
@@ -498,14 +494,6 @@
 				minimumVersion = 13.0.0;
 			};
 		};
-		D929B1932A5496BC0055602A /* XCRemoteSwiftPackageReference "Resolver" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hmlongco/Resolver.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.5.0;
-			};
-		};
 		D95A227D2A52D0870006D848 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -537,11 +525,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D929B18B2A5454F40055602A /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
-		};
-		D929B1942A5496BC0055602A /* Resolver */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D929B1932A5496BC0055602A /* XCRemoteSwiftPackageReference "Resolver" */;
-			productName = Resolver;
 		};
 		D95A227E2A52D0870006D848 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

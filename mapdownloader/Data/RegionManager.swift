@@ -26,6 +26,8 @@ class RegionManager:NSObject {
         for element in rootRegion.region {
             if let name = element.attributes[Constants.nameFieldName] {
                 var region = Region(name: name)
+                region.downloadPrefix = element.attributes[Constants.nameFieldName]
+                region.map = Region.YNBool(value: element.attributes[Constants.mapFieldName])
                 region.regions = packToStatic(rootRegion: element)
                 regions.append(region)
             }
