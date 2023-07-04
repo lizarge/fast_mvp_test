@@ -10,7 +10,7 @@ import Alamofire
 
 class DownloadManager: AbstractPublisher {
     
-    enum FileState {
+    enum FileState:Comparable {
         case none
         case uploading(Double)
         case dowloaded
@@ -27,7 +27,7 @@ class DownloadManager: AbstractPublisher {
         return self.fileStates[region.url] ?? .none
     }
     
-    func dowload(region:Region, downloadPrefix anotherBoringPrefix:String = ""){
+    func dowload(region:Region, downloadPrefix anotherBoringPrefix:(String,String)){
         Task {
             let destination: DownloadRequest.Destination = { _, _ in
                 let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -35,7 +35,9 @@ class DownloadManager: AbstractPublisher {
                 return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
             }
             
-            if let url = URL(string: Constants.downloadPrefix + region.url.absoluteString + anotherBoringPrefix + Constants.fileNamePostfix ) {
+            let firstPart = anotherBoringPrefix.0 == "" ? "" : anotherBoringPrefix.0 + "_"
+            let namePart = (firstPart + region.url.absoluteString + "_" + anotherBoringPrefix.1).lowercased().capitalizedSentence
+            if let url = URL(string: Constants.basicUrl + namePart + Constants.basicUrlPostfix ) {
                 
                 print(url)
                 
@@ -48,7 +50,7 @@ class DownloadManager: AbstractPublisher {
                     self.notify(finished: false)
                 }
                 .responseData { response in
-                    var statusCode = response.response?.statusCode
+                    let statusCode = response.response?.statusCode
                     
                     if statusCode != 200 {
                         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]

@@ -43,5 +43,4 @@ struct Region: Codable  {
     }
 }
 
-//https://download.osmand.net/download?standard=yes&file=Capital_region_denmark_europe_2.obf.zip
 

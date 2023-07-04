@@ -23,8 +23,8 @@ class Constants {
     static let innerFieldName = "inner_download_prefix"
     static let mapFieldName = "map"
     
-    static let fileNamePostfix = "_2.obf.zip"
-    static let downloadPrefix = "https://download.osmand.net/download?standard=yes&file="
+    static let basicUrlPostfix = "_2.obf.zip"
+    static let basicUrl = "https://download.osmand.net/download?standard=yes&file="
     
     
     static func getRegionViewController()->RegionViewController? {

@@ -28,7 +28,7 @@ class EntryViewController: UINavigationController {
         
         Task {
             if let regionViewController = Constants.getRegionViewController()  {
-                regionViewController.downloadPrefix = "_europe"
+                regionViewController.downloadPrefix = ("","europe")
                 regionViewController.regionList = await regionManager.loadAndParse()
                 self.pushViewController(regionViewController, animated: true)
             }

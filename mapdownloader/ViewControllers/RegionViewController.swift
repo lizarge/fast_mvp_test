@@ -15,7 +15,7 @@ class RegionViewController: UITableViewController {
     
     @IBOutlet weak var deviceMemoryView: FreeSpaceView!
     
-    var downloadPrefix = ""
+    var downloadPrefix:(String,String) = ("","")
     var isSecondaryController = false 
     var regionList:[Region]? {
         didSet{
@@ -62,21 +62,30 @@ class RegionViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
-        if let regionViewController = Constants.getRegionViewController() {
-            if let region = regionList?[indexPath.section].regions?[indexPath.row], let regions = region.regions, regions.count > 0 {
-                regionViewController.isSecondaryController = true
-                regionViewController.regionList = [region]
-                regionViewController.title = region.name
-                
-                if let  prefix = region.downloadPrefix {
-                    regionViewController.downloadPrefix = prefix.capitalizedSentence + "_" + self.downloadPrefix
-                } else {
-                    regionViewController.downloadPrefix = self.downloadPrefix
+        if let region = regionList?[indexPath.section].regions?[indexPath.row] {
+         
+            if let regionViewController = Constants.getRegionViewController() {
+                if let regions = region.regions, regions.count > 0 {
+                    regionViewController.isSecondaryController = true
+                    regionViewController.regionList = [region]
+                    regionViewController.title = region.name
+                    
+                    if let  prefix = region.downloadPrefix {
+                        let prefix = self.downloadPrefix.0 == "" ? prefix : self.downloadPrefix.0 + "_" + prefix
+                        let postfix = self.downloadPrefix.1
+                        regionViewController.downloadPrefix = (prefix.lowercased(), postfix.lowercased())
+                    } else {
+                        regionViewController.downloadPrefix = self.downloadPrefix
+                    }
+                    
+                    self.navigationController?.pushViewController(regionViewController, animated: true)
+                } else if let region = regionList?[indexPath.section].regions?[indexPath.row]{
+                    
+                    if downloadManager.state(for:region) == .none {
+                        self.downloadManager.dowload(region: region, downloadPrefix: self.downloadPrefix)
+                    }
+                    
                 }
-                
-                self.navigationController?.pushViewController(regionViewController, animated: true)
-            } else if let region = regionList?[indexPath.section].regions?[indexPath.row]{
-                self.downloadManager.dowload(region: region, downloadPrefix: self.downloadPrefix)
             }
         }
     }
