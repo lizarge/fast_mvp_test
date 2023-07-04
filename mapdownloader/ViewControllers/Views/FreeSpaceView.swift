@@ -15,7 +15,7 @@ class FreeSpaceView: UIView {
     func updateWith(discStatus:DiskStatus){
         freeSpaceLabel.text = "Free \(DiskStatus.freeDiskSpace)"
         freeSpaceProgress.setProgress(
-            Float( DiskStatus.usedDiskSpaceInBytes  / DiskStatus.totalDiskSpaceInBytes  ),
+            Float(DiskStatus.freeDiskSpaceInBytes)  / Float(DiskStatus.totalDiskSpaceInBytes),
             animated: true)
     }
 }

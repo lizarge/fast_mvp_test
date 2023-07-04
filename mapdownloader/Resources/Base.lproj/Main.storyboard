@@ -11,11 +11,13 @@
         <!--Download Maps-->
         <scene sceneID="Ijj-vP-jFs">
             <objects>
-                <tableViewController id="rfH-2f-AAi" customClass="RegionViewController" customModule="mapdownloader" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="QbD-RA-wHg">
+                <tableViewController storyboardIdentifier="RegionViewController" id="rfH-2f-AAi" customClass="RegionViewController" customModule="mapdownloader" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="QbD-RA-wHg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
+                        <color key="separatorColor" name="celldivider"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="fKd-lC-MsE" customClass="FreeSpaceView" customModule="mapdownloader" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,7 +41,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="hoM-yN-dUe">
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hoM-yN-dUe">
                                     <rect key="frame" x="16" y="41" width="361" height="10"/>
                                     <color key="tintColor" name="navbar"/>
                                     <constraints>
@@ -65,13 +67,74 @@
                             </connections>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="z78-P8-09O">
-                                <rect key="frame" x="0.0" y="119.33333206176758" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionViewCell" rowHeight="44" id="z78-P8-09O" customClass="RegionViewCell" customModule="mapdownloader" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="119.33333206176758" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z78-P8-09O" id="mLL-3Q-zhl">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_custom_map" translatesAutoresizingMaskIntoConstraints="NO" id="M0B-FH-pAM">
+                                            <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="Efy-A1-eW6"/>
+                                                <constraint firstAttribute="height" constant="30" id="Vvz-Cv-drz"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gW8-Cp-sfb">
+                                            <rect key="frame" x="62" y="6" width="271" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="HQG-0I-RKR"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_custom_dowload" translatesAutoresizingMaskIntoConstraints="NO" id="sK7-sS-cRu">
+                                            <rect key="frame" x="341" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="NqR-w6-bRO"/>
+                                                <constraint firstAttribute="width" constant="30" id="nQv-fs-DeC"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_custom_chevron" translatesAutoresizingMaskIntoConstraints="NO" id="Cp4-Aq-8JV">
+                                            <rect key="frame" x="347" y="6.6666666666666679" width="30" height="30.000000000000004"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="3BT-Uz-PBD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G3i-TX-VtP">
+                                            <rect key="frame" x="62" y="29" width="271" height="4"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="b4a-i3-TIs"/>
+                                            </constraints>
+                                        </progressView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="G3i-TX-VtP" secondAttribute="bottom" id="4zW-14-FWk"/>
+                                        <constraint firstItem="sK7-sS-cRu" firstAttribute="leading" secondItem="gW8-Cp-sfb" secondAttribute="trailing" constant="8" symbolic="YES" id="5P1-mX-dLd"/>
+                                        <constraint firstAttribute="trailing" secondItem="sK7-sS-cRu" secondAttribute="trailing" constant="22" id="CuC-a9-P2O"/>
+                                        <constraint firstAttribute="bottom" secondItem="Cp4-Aq-8JV" secondAttribute="bottom" constant="7.3300000000000001" id="K3D-j3-2K4"/>
+                                        <constraint firstItem="gW8-Cp-sfb" firstAttribute="leading" secondItem="M0B-FH-pAM" secondAttribute="trailing" constant="16" id="XKf-gY-38z"/>
+                                        <constraint firstItem="M0B-FH-pAM" firstAttribute="top" secondItem="mLL-3Q-zhl" secondAttribute="top" constant="7" id="aPt-mM-FOd"/>
+                                        <constraint firstItem="gW8-Cp-sfb" firstAttribute="top" secondItem="mLL-3Q-zhl" secondAttribute="top" constant="6" id="nGP-UH-VXx"/>
+                                        <constraint firstItem="M0B-FH-pAM" firstAttribute="leading" secondItem="mLL-3Q-zhl" secondAttribute="leading" constant="16" id="qRY-64-ggT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Cp4-Aq-8JV" secondAttribute="trailing" constant="16" id="s38-Ej-UaH"/>
+                                        <constraint firstItem="Cp4-Aq-8JV" firstAttribute="top" secondItem="mLL-3Q-zhl" secondAttribute="top" constant="6.6699999999999999" id="ssh-IN-ffe"/>
+                                        <constraint firstItem="G3i-TX-VtP" firstAttribute="leading" secondItem="mLL-3Q-zhl" secondAttribute="leadingMargin" constant="42" id="tSy-Ro-r4W"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="G3i-TX-VtP" secondAttribute="trailing" constant="40" id="tVr-ia-JXB"/>
+                                        <constraint firstItem="sK7-sS-cRu" firstAttribute="top" secondItem="mLL-3Q-zhl" secondAttribute="top" constant="7" id="uzR-PJ-d4b"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" name="cellbackground"/>
+                                <connections>
+                                    <outlet property="disclosureImageView" destination="Cp4-Aq-8JV" id="pR2-cp-mkJ"/>
+                                    <outlet property="dowloadImageView" destination="sK7-sS-cRu" id="VRy-G0-inY"/>
+                                    <outlet property="downloadProgressView" destination="G3i-TX-VtP" id="88D-nV-zCq"/>
+                                    <outlet property="iconImageView" destination="M0B-FH-pAM" id="0eW-hY-mQI"/>
+                                    <outlet property="regionNameLabel" destination="gW8-Cp-sfb" id="dEW-9j-Jdt"/>
+                                    <outlet property="regionNameLabelContrains" destination="nGP-UH-VXx" id="hal-KO-0hf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -82,54 +145,21 @@
                     <navigationItem key="navigationItem" title="Download Maps" id="7W9-Rv-2na"/>
                     <connections>
                         <outlet property="deviceMemoryView" destination="fKd-lC-MsE" id="TTV-BD-W2c"/>
-                        <segue destination="V1f-ui-iH3" kind="show" id="39D-PX-jOH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zj-Dv-I1t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="701.52671755725191" y="-250"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="HqI-5d-7ve">
-            <objects>
-                <tableViewController id="V1f-ui-iH3" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ya8-Dj-5wS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="K75-1V-73Z">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K75-1V-73Z" id="ezV-Le-cAL">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="V1f-ui-iH3" id="kbC-TO-0Vc"/>
-                            <outlet property="delegate" destination="V1f-ui-iH3" id="60t-Rk-Jyo"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="FrJ-XP-Wjh"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D4o-uf-lW5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1537" y="-250"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Entry View Controller-->
         <scene sceneID="0fO-Ch-mbo">
             <objects>
-                <navigationController id="9p3-El-kJb" customClass="NavigationController" customModule="mapdownloader" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="9p3-El-kJb" customClass="EntryViewController" customModule="mapdownloader" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WKa-ql-u6K">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="rfH-2f-AAi" kind="relationship" relationship="rootViewController" id="f8k-GA-3Yt"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hF4-sX-Uzh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,8 +167,20 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_custom_chevron" width="30" height="30"/>
+        <image name="ic_custom_dowload" width="30" height="30"/>
+        <image name="ic_custom_map" width="30" height="30"/>
+        <namedColor name="background">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="cellbackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="celldivider">
+            <color red="0.79199999570846558" green="0.77999997138977051" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="navbar">
-            <color red="0.93725490570000003" green="0.55686277149999996" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.93699997663497925" green="0.55699998140335083" blue="0.20399999618530273" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

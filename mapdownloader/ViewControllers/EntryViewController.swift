@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import ProgressHUD
 
-class NavigationController: UINavigationController {
+class EntryViewController: UINavigationController {
 
+    let regionManager = DependencyManager.resolve(RegionManager.self)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +22,15 @@ class NavigationController: UINavigationController {
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         appearance.isTranslucent = true
+        appearance.tintColor = .white
         UIApplication.shared.statusBarUIView?.backgroundColor = appearance.backgroundColor
+        
+        Task {
+            if let regionViewController = Constants.getRegionViewController()  {
+                regionViewController.regionList = await regionManager.loadAndParse()
+                self.pushViewController(regionViewController, animated: true)
+            }
+        }
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

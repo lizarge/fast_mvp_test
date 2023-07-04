@@ -24,6 +24,10 @@ final class DependencyManager {
         container.register(DiskStatus.self) { resolver in
             return DiskStatus()
         }
+        
+        container.register(RegionManager.self) { resolver in
+            return RegionManager()
+        }
     }
     
     public static func resolve<Service>(_ serviceType: Service.Type) -> Service {
