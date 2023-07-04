@@ -159,11 +159,15 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WKa-ql-u6K">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="navbar"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hF4-sX-Uzh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199" y="-250"/>
+            <point key="canvasLocation" x="-82" y="-250"/>
         </scene>
     </scenes>
     <resources>

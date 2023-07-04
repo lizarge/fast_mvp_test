@@ -9,9 +9,12 @@ import UIKit
 import Swinject
 
 class RegionViewController: UITableViewController {
-
-    let discStatus = DependencyManager.resolve(DiskStatus.self)
-   
+  
+    let memoryStatusView = DependencyManager.resolve(DiskStatus.self)
+    let downloadManager = DependencyManager.resolve(DownloadManager.self)
+    
+    @IBOutlet weak var deviceMemoryView: FreeSpaceView!
+    
     var isSecondaryController = false 
     var regionList:[Region]? {
         didSet{
@@ -19,17 +22,18 @@ class RegionViewController: UITableViewController {
         }
     }
     
-    @IBOutlet weak var deviceMemoryView: FreeSpaceView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
-        
-        self.deviceMemoryView.updateWith(discStatus: discStatus)
-        
         self.tableView?.tableHeaderView = isSecondaryController ? nil : deviceMemoryView
+        
+        downloadManager.subscribe(self)
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        downloadManager.unsubscribe(self)
+    }
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return regionList?.count ?? 0
@@ -45,9 +49,7 @@ class RegionViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:
-                                                    Constants.regionCellReuseID,
-                                                 for: indexPath) as? RegionViewCell
-        
+                                        Constants.regionCellReuseID, for: indexPath) as? RegionViewCell
         cell?.fill(with: regionList?[indexPath.section].regions?[indexPath.row])
         return cell ?? UITableViewCell()
     }
@@ -65,8 +67,18 @@ class RegionViewController: UITableViewController {
                 regionViewController.regionList = [region]
                 regionViewController.title = regionList?[indexPath.section].regions?[indexPath.row].name
                 self.navigationController?.pushViewController(regionViewController, animated: true)
+            } else if let region = regionList?[indexPath.section].regions?[indexPath.row]{
+                self.downloadManager.dowload(region: region)
             }
         }
     }
     
+}
+
+extension RegionViewController:Subscriber {
+    func updateDownloadState(subject: AbstractPublisher, finished: Bool) {
+        if finished {
+            self.deviceMemoryView?.updateWith(discStatus: memoryStatusView)
+        }
+    }
 }

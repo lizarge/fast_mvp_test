@@ -20,6 +20,9 @@ class Constants {
     //xml
     static let datasourceXML = NSDataAsset(name: "Regions")
     static let nameFieldName = "name"
+    static let fileNamePostfix = "_2.obf.zip"
+    static let downloadPrefix = "https://download.osmand.net/download?standard=yes&file="
+    
     
     static func getRegionViewController()->RegionViewController? {
         return Constants.mainStoryboard.instantiateViewController(withIdentifier:

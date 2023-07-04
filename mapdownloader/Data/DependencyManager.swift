@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Swinject
+import Resolver
 
 final class DependencyManager {
     
@@ -17,21 +17,22 @@ final class DependencyManager {
     }
     
     private static func setupGeneral(){
-        container.register(DownloadManager.self) { resolver in
+        
+        container.register(DownloadManager.self,name: "main" ) { resolver in
             return DownloadManager()
         }
         
-        container.register(DiskStatus.self) { resolver in
+        container.register(DiskStatus.self,name: "main") { resolver in
             return DiskStatus()
         }
         
-        container.register(RegionManager.self) { resolver in
+        container.register(RegionManager.self, name:"main" ) { resolver in
             return RegionManager()
         }
     }
     
     public static func resolve<Service>(_ serviceType: Service.Type) -> Service {
-        return DependencyManager.container.resolve(serviceType, name: nil)!
+        return DependencyManager.container.resolve(serviceType, name: "main" )!
     }
 
 }
