@@ -33,7 +33,7 @@
 		D929B1892A543EEE0055602A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D929B18E2A545CB20055602A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D929B1912A5461FA0055602A /* AbstractPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPublisher.swift; sourceTree = "<group>"; };
-		D95A22592A52CB540006D848 /* mapdownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapdownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D95A22592A52CB540006D848 /* mapdowloader_ankudinov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapdowloader_ankudinov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95A225C2A52CB540006D848 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D95A22632A52CB540006D848 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D95A22682A52CB540006D848 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		D95A225A2A52CB540006D848 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D95A22592A52CB540006D848 /* mapdownloader.app */,
+				D95A22592A52CB540006D848 /* mapdowloader_ankudinov.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,9 +172,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D95A22582A52CB540006D848 /* mapdownloader */ = {
+		D95A22582A52CB540006D848 /* mapdowloader_ankudinov */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D95A226D2A52CB540006D848 /* Build configuration list for PBXNativeTarget "mapdownloader" */;
+			buildConfigurationList = D95A226D2A52CB540006D848 /* Build configuration list for PBXNativeTarget "mapdowloader_ankudinov" */;
 			buildPhases = (
 				D95A22552A52CB540006D848 /* Sources */,
 				D95A22562A52CB540006D848 /* Frameworks */,
@@ -184,7 +184,7 @@
 			);
 			dependencies = (
 			);
-			name = mapdownloader;
+			name = mapdowloader_ankudinov;
 			packageProductDependencies = (
 				D95A227E2A52D0870006D848 /* Alamofire */,
 				D95A228A2A52D15C0006D848 /* Swinject */,
@@ -192,7 +192,7 @@
 				D929B18C2A5454F40055602A /* ProgressHUD */,
 			);
 			productName = mapdownloader;
-			productReference = D95A22592A52CB540006D848 /* mapdownloader.app */;
+			productReference = D95A22592A52CB540006D848 /* mapdowloader_ankudinov.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -229,7 +229,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D95A22582A52CB540006D848 /* mapdownloader */,
+				D95A22582A52CB540006D848 /* mapdowloader_ankudinov */,
 			);
 		};
 /* End PBXProject section */
@@ -474,7 +474,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D95A226D2A52CB540006D848 /* Build configuration list for PBXNativeTarget "mapdownloader" */ = {
+		D95A226D2A52CB540006D848 /* Build configuration list for PBXNativeTarget "mapdowloader_ankudinov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D95A226E2A52CB540006D848 /* Debug */,

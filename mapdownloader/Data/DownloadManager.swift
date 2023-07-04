@@ -39,10 +39,7 @@ class DownloadManager: AbstractPublisher {
             let namePart = (firstPart + region.url.absoluteString + "_" + anotherBoringPrefix.1).lowercased().capitalizedSentence
             if let url = URL(string: Constants.basicUrl + namePart + Constants.basicUrlPostfix ) {
                 
-                print(url)
-                
                 self.fileStates[region.url] = .uploading(0)
-                self.notify(finished: true)
                 
                 AF.download(url,to: destination)
                 .downloadProgress { progress in

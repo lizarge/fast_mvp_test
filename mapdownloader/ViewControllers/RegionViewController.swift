@@ -81,7 +81,7 @@ class RegionViewController: UITableViewController {
                     self.navigationController?.pushViewController(regionViewController, animated: true)
                 } else if let region = regionList?[indexPath.section].regions?[indexPath.row]{
                     
-                    if downloadManager.state(for:region) == .none {
+                    if downloadManager.state(for:region) == .none && region.map?.bool != false {
                         self.downloadManager.dowload(region: region, downloadPrefix: self.downloadPrefix)
                     }
                     
