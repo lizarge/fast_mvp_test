@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class DownloadManager: AbstractPublisher {
     
@@ -50,8 +51,10 @@ class DownloadManager: AbstractPublisher {
                     let statusCode = response.response?.statusCode
                     
                     if statusCode != 200 {
+                        DispatchQueue.main.async {
+                            UIApplication.shared.error(alert: "Got error code from backend: \(statusCode ?? -1)")
+                        }
                         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                        let fileURL = documentsURL.appendingPathComponent( region.url.absoluteString )
                         try? FileManager.default.removeItem(at: documentsURL)
                     }
                     
@@ -65,9 +68,7 @@ class DownloadManager: AbstractPublisher {
     }
     
     func refreshStatuses(){
-        
         do {
-            // Get the document directory url
             let documentDirectory = try FileManager.default.url(
                 for: .documentDirectory,
                 in: .userDomainMask,
@@ -89,8 +90,7 @@ class DownloadManager: AbstractPublisher {
             }
             
         } catch {
-            print(error)
+            UIApplication.shared.error(alert: error.localizedDescription)
         }
-        
     }
 }

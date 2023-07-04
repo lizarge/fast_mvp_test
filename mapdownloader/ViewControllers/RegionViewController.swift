@@ -80,11 +80,13 @@ class RegionViewController: UITableViewController {
                     
                     self.navigationController?.pushViewController(regionViewController, animated: true)
                 } else if let region = regionList?[indexPath.section].regions?[indexPath.row]{
-                    
-                    if downloadManager.state(for:region) == .none && region.map?.bool != false {
-                        self.downloadManager.dowload(region: region, downloadPrefix: self.downloadPrefix)
+                    if region.map?.bool == false {
+                        UIApplication.shared.error(alert: "This map not avaible to download by map=no propery")
+                    } else {
+                        if downloadManager.state(for:region) == .none {
+                            self.downloadManager.dowload(region: region, downloadPrefix: self.downloadPrefix)
+                        }
                     }
-                    
                 }
             }
         }

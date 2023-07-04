@@ -48,3 +48,39 @@ extension String {
         return firstLetter + remainingLetters
     }
 }
+
+extension UIViewController {
+    func error(alert:String) {
+        let alertViewController = UIAlertController(title: "Error", message: alert, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "Done", style: .cancel))
+        self.present(alertViewController, animated: true)
+    }
+}
+
+extension UIViewController {
+    func topMostViewController() -> UIViewController {
+        if self.presentedViewController == nil {
+            return self
+        }
+        if let navigation = self.presentedViewController as? UINavigationController {
+            return navigation.visibleViewController?.topMostViewController() ?? UIViewController()
+        }
+        if let tab = self.presentedViewController as? UITabBarController {
+            if let selectedTab = tab.selectedViewController {
+                return selectedTab.topMostViewController()
+            }
+            return tab.topMostViewController()
+        }
+        return self.presentedViewController!.topMostViewController()
+    }
+}
+
+extension UIApplication {
+    func topMostViewController() -> UIViewController? {
+        return self.keyWindow?.rootViewController?.topMostViewController()
+    }
+    
+    func error(alert:String) {
+        self.topMostViewController()?.error(alert: alert)
+    }
+}
